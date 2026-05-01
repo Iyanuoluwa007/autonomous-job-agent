@@ -1,0 +1,124 @@
+# =============================================================================
+# autonomous-job-agent .gitignore
+#
+# This file is part of the public release safety net. The pre-commit hook
+# (.git/hooks/pre-commit) is the second layer - it scans for personal data
+# in any file being committed.
+# =============================================================================
+
+# Real config - NEVER commit (contains live API keys, SMTP creds, personal email)
+config.yaml
+config.yaml.bak*
+config.yaml.bak
+config.yaml.save
+
+# Real policy - contains personal answers (salary, location, skills, etc.)
+profile_answers.yaml
+profile_answers.yaml.bak*
+
+# Real watchdog env - contains Telegram tokens
+watchdog.env
+watchdog.env.bak*
+
+# Watchdog state - tracks recent alerts, contains paths and timestamps
+watchdog_state.json
+
+# Live discovered-companies list (the example version is committed)
+discovered_companies.json
+!discovered_companies.json.example
+
+# Database - local state, contains application history
+applications.db
+applications.db.bak_*
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# Logs - operational data, may include URLs and decisions
+*.log
+agent.log
+watchdog.log
+policy_llm_audit.log
+p36_test.log
+dry_run_test.log
+
+# Auth cookies / session state
+linkedin_session.json
+*.session.json
+*.cookies.json
+
+# CV / personal documents
+resume.pdf
+resume.txt
+resume.docx
+cv.pdf
+cv.txt
+cv.docx
+*.pdf
+*.docx
+!docs/*.pdf
+!docs/*.docx
+
+# Backup snapshots created by patches (always pollute working tree)
+*.bak
+*.bak_*
+*.bak[0-9]*
+
+# Python build / cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+.eggs/
+build/
+dist/
+*.coverage
+htmlcov/
+.tox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.DS_Store
+
+# OS
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Compressed backups / tarballs
+*.tar
+*.tar.gz
+*.zip
+*.7z
+
+# Temp files
+*.tmp
+*~
+
+# Secrets / env files
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+*.pem
+*.key
+!*.public.key
+
+# Project-specific temp dirs
+/tmp/
+tmp/
+.cache/

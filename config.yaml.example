@@ -1,0 +1,96 @@
+# ── Job Application Agent Config ─────────────────────────────────────────────
+
+# NVIDIA NIM free API key
+# Get yours: https://build.nvidia.com/settings/api-keys
+nvidia_nim_api_key: "<YOUR_NVIDIA_NIM_API_KEY_HERE>"
+
+# Model routing (all free on NVIDIA NIM)
+models:
+  primary  : "mistralai/devstral-2-123b-instruct-2512"
+  fast     : "meta/llama-3.3-70b-instruct"
+  fallback : "z-ai/glm4.7"
+
+# Resume
+resume_path    : "resume.txt"     # plain text — used for LLM context
+resume_pdf_path: "resume.pdf"     # PDF — uploaded to job application forms
+
+# ── Your Profile ──────────────────────────────────────────────────────────────
+profile:
+  full_name : "Your Full Name"
+  first_name: "Your"
+  last_name : "Name"
+  email     : "your.email@example.com"
+  phone     : "+44 1234 567890"
+  linkedin  : "https://www.linkedin.com/in/your-profile/"
+  website   : "https://your-website.example.com"
+  location  : "City, Country"
+
+# ── Target Jobs ───────────────────────────────────────────────────────────────
+target_roles:
+  - "AI Systems Engineer"
+  - "Computer Vision Engineer"
+  - "Machine Learning Engineer"
+  - "Autonomous Systems Engineer"
+  - "Robotics Engineer"
+  - "Embedded Systems Engineer"
+  - "Control Systems Engineer"
+  - "Software Engineer"
+  - "Hardware Engineer"
+  - "AI Engineer"
+  - "Data Scientist"
+  - "ROS2 Engineer"
+
+target_locations:
+  - "Manchester"
+  - "London"
+  - "Cambridge"
+  - "Oxford"
+  - "Bristol"
+  - "Edinburgh"
+  - "Birmingham"
+  - "Remote"
+  - "UK"
+
+# Minimum fit score to proceed with application (0-100)
+min_fit_score: 58
+
+# Companies to never apply to
+blacklist_companies:
+  - "Amazon Flex"
+  - "Uber"
+
+# OPTIONAL: Add extra company career pages here beyond the 50+ built-in list.
+# These can be career homepages OR specific job posting URLs — both work.
+# The built-in list already includes Wayve, Oxa, Dyson, DeepMind, NVIDIA etc.
+# Just add any company NOT already in the built-in list.
+# career_pages:
+#   - "https://www.auar.com/careers"       # already added — keep or remove
+
+# ── Email Digest ──────────────────────────────────────────────────────────────
+# Hourly status emails — style: Sentinel Quant reports
+email:
+  smtp_host : "smtp.gmail.com"
+  smtp_port : 587
+  smtp_user : "your-email@example.com"
+  smtp_pass : "your-app-specific-password"   # Gmail App Password (not your main password)
+  from_addr : "Job Agent <your.email@example.com>"
+  to_addrs  :
+    - "your.email@example.com"           # yourself
+
+# ── Feature Toggles ──────────────────────────────────────────────────────────
+# Disable broken or rate-limited scrapers. Bind-mounted, takes effect next sweep.
+enable_discovery: false   # DuckDuckGo blocked from VPS IP (5min wasted/sweep)
+enable_indeed   : false   # Indeed blocks VPS IP, returns 0 results
+
+# ── Agent Behaviour ───────────────────────────────────────────────────────────
+delay_between_jobs    : 8      # seconds between processing each job URL
+loop_interval_minutes : 30     # minutes between full job-discovery sweeps
+
+
+# === C3: application rate limits (added by audit fix) ===
+max_applications_per_hour: 12
+max_applications_per_sweep: 5
+
+
+# === Patch 20: per-board URL limit ===
+max_urls_per_board: 5

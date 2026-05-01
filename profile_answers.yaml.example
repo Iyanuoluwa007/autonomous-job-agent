@@ -1,0 +1,96 @@
+# =============================================================================
+# profile_answers.yaml.example
+#
+# Copy to profile_answers.yaml and fill in your own values.
+# This file controls how the policy dispatcher answers form questions on your
+# behalf. Every value here is read by core.policy_answers.PolicyAnswers and
+# must reflect YOUR truth - the agent will not invent answers.
+# =============================================================================
+
+profile_answers:
+  # ---- Work authorization (UK example) ----
+  right_to_work_uk: "yes"               # "yes" | "no"
+  visa_type: "Graduate Visa"            # free-text, e.g. "Skilled Worker", "Tier 2", "EU Settled"
+  requires_sponsorship_current: "no"    # "yes" | "no" - NOW
+  requires_sponsorship_future_policy:
+    short_term: "no"
+    permanent:  "yes"
+    unknown:    "yes"
+
+  # ---- Location ----
+  currently_based: "City, Country"
+  open_to_relocation_uk: "yes"
+  open_to_relocation_international: "no"
+  preferred_uk_locations:
+    - "London"
+    - "Manchester"
+    - "Remote UK"
+
+  # ---- Experience (in years) ----
+  total_years_experience: 3
+  skill_years:
+    python: 5
+    cpp: 2
+    ml: 3
+    ai: 3
+    deep_learning: 2
+    robotics: 2
+    ros: 1
+
+  # ---- Salary (display only - never submit raw numbers) ----
+  salary_policy:
+    minimum_gbp: 50000
+    target_range: "50000-65000"
+    display_when_asked: "50,000 - 65,000 GBP (flexible, depending on role)"
+
+  # ---- Availability ----
+  notice_period_weeks: 4
+  available_start: "with notice"
+  previously_interviewed_default: "prefer_not_to_say"
+
+  # ---- Extended profile (used by LLM-fallback for context) ----
+  leadership:
+    has_managed_direct_reports: "no"
+    largest_team_managed: 0
+    has_mentored: "no"
+    leadership_summary: "Replace with one-line truthful summary."
+
+  programming_languages:
+    python: "expert"
+    cpp: "proficient"
+
+  hardware_platforms:
+    microcontrollers: []
+    robot_platforms: []
+    sensors: []
+    simulation_environments: []
+
+  software_stack:
+    containerization: ["Docker"]
+    kubernetes_level: "familiar"
+    ml_frameworks: ["PyTorch"]
+    databases: ["PostgreSQL", "SQLite"]
+    cicd_monitoring: ["GitHub Actions"]
+    backend_frameworks: ["FastAPI"]
+    frontend_frameworks: ["React"]
+
+  cloud_platforms:
+    aws: "familiar"
+
+  domain_experience:
+    machine_learning: true
+
+  open_source_visible_projects:
+    - "Replace with your own short project descriptions, one per line."
+
+  # ---- Watchdog / safety flags ----
+  llm_fallback_enabled: false   # set true to enable LLM cascade for novel questions
+  llm_fallback_dry_run: true    # when true, LLM picks are intercepted (audit-only)
+  skip_if_question_unresolvable: true
+  max_form_human_review_per_day: 5
+  log_every_answered_question: true
+
+  policy_version: "1.0"
+  reviewed_by_user: false
+  review_date: ""
+  reviewed_by: "<your name or handle>"

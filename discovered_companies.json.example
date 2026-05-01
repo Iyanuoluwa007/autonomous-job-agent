@@ -1,0 +1,21 @@
+{
+  "_comment": "Example seed companies. Replace with your own targets via tools/discovery/weekly_sweep.py. The agent crawls these career pages each sweep cycle.",
+  "https://jobs.ashbyhq.com/example-company": {
+    "added_at": "2026-01-01T00:00:00Z",
+    "company": "Example Company",
+    "original_url": "https://jobs.ashbyhq.com/example-company",
+    "source": "manual_seed"
+  },
+  "https://boards.greenhouse.io/example-greenhouse": {
+    "added_at": "2026-01-01T00:00:00Z",
+    "company": "Example Greenhouse",
+    "original_url": "https://boards.greenhouse.io/example-greenhouse",
+    "source": "manual_seed"
+  },
+  "https://jobs.lever.co/example-lever": {
+    "added_at": "2026-01-01T00:00:00Z",
+    "company": "Example Lever",
+    "original_url": "https://jobs.lever.co/example-lever",
+    "source": "manual_seed"
+  }
+}
